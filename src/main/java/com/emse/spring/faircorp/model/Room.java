@@ -46,11 +46,18 @@ public class Room {
 
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getFloor() { return this.floor;
+    }
+
+    public void setFloor(Integer floor) {
+        this.floor = floor;
     }
 
 }
