@@ -15,8 +15,15 @@ class RoomDaoTest {
     private RoomDao roomDao;
 
     @Test
-    public void shouldFindAHeater() {
+    public void shouldFindARoomByID() {
         Room room = roomDao.getOne(-10L);
+        Assertions.assertThat(room.getName()).isEqualTo("Room1");
+        Assertions.assertThat(room.getFloor()).isEqualTo(1);
+    }
+
+    @Test
+    public void shouldFindARoomByName() {
+        Room room = roomDao.findByName("Room1");
         Assertions.assertThat(room.getName()).isEqualTo("Room1");
         Assertions.assertThat(room.getFloor()).isEqualTo(1);
     }

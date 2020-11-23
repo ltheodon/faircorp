@@ -9,8 +9,11 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface RoomDao extends JpaRepository<Room, Long> {
+public interface RoomDao extends JpaRepository<Room, Long>, RoomDaoCustom {
 
     Room getOne(Long id);
+
+    @Query("select c from Room c where c.name=:name")
+    Room findByName(@Param("name") String name);
 
 }
