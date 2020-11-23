@@ -30,4 +30,11 @@ public class WindowDaoCustomImpl implements WindowDaoCustom {
         return del;
     }
 
+    /*public Window save(Window window) {
+        String jpql = "add w from Window w";
+        Query query = em.createQuery(jpql);
+        Integer del = query.executeUpdate();
+        return window;
+    }*/
+
 }

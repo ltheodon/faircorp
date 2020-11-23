@@ -12,4 +12,7 @@ import java.util.List;
 public interface WindowDao extends JpaRepository<Window, Long>, WindowDaoCustom {
 
     Window getOne(Long id);
+
+    Window save(Window window);
+
 }

@@ -28,7 +28,7 @@ public class Window {
     public Window() {
     }
 
-    public Window(String name, WindowStatus status, Room room) {
+    public Window(Room room, String name, WindowStatus status) {
         this.windowStatus = status;
         this.name = name;
         this.room = room;
