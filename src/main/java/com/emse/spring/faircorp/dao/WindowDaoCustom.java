@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface WindowDaoCustom{
     List<Window> findRoomOpenWindows(Long id);
+
+    Integer deleteWindowByRoom(Long room_id);
 }

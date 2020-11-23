@@ -2,15 +2,11 @@ package com.emse.spring.faircorp.dao;
 
 import com.emse.spring.faircorp.model.Window;
 import com.emse.spring.faircorp.model.WindowStatus;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
-import java.util.Optional;
 
 public class WindowDaoCustomImpl implements WindowDaoCustom {
 
@@ -24,6 +20,14 @@ public class WindowDaoCustomImpl implements WindowDaoCustom {
                 .setParameter("id", id)
                 .setParameter("status", WindowStatus.OPEN)
                 .getResultList();
+    }
+
+    @Override
+    public Integer deleteWindowByRoom(Long id) {
+        String jpql = "DELETE FROM Window w WHERE w.room.id = :id";
+        Query query = em.createQuery(jpql);
+        Integer del = query.setParameter("id", id).executeUpdate();
+        return del;
     }
 
 }

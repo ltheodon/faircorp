@@ -40,4 +40,16 @@ class WindowDaoTest {
         Assertions.assertThat(result).isEmpty();
     }
 
+    @Test
+    public void shouldDeleteTwoWindows() {
+        Integer del = windowDao.deleteWindowByRoom(-10L);
+        Assertions.assertThat(del).isEqualTo(2);
+    }
+
+    @Test
+    public void shouldDeleteNoWindow() {
+        Integer del = windowDao.deleteWindowByRoom(-8L);
+        Assertions.assertThat(del).isEqualTo(0);
+    }
+
 }

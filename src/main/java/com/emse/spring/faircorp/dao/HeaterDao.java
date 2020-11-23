@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface HeaterDao extends JpaRepository<Heater, Long> {
+public interface HeaterDao extends JpaRepository<Heater, Long>, HeaterDaoCustom {
 
     Heater getOne(Long id);
 
