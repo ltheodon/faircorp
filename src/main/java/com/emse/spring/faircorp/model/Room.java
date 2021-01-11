@@ -17,6 +17,10 @@ public class Room {
     private Integer floor;
 
     @NotNull
+    @ManyToOne
+    private Building building;
+
+    @NotNull
     private String name;
 
     private Double currentTemperature;
@@ -60,4 +64,23 @@ public class Room {
         this.floor = floor;
     }
 
+    public Double getCurrentTemperature() {
+        return currentTemperature;
+    }
+
+    public Double getTargetTemperature() {
+        return targetTemperature;
+    }
+
+    public Set<Heater> getHeaters() {
+        return heaters;
+    }
+
+    public Set<Window> getWindows() {
+        return windows;
+    }
+
+    public void deleteHeaters() {
+        heaters.clear();
+    }
 }

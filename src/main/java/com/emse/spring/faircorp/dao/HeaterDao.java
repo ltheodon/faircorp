@@ -13,4 +13,6 @@ public interface HeaterDao extends JpaRepository<Heater, Long>, HeaterDaoCustom 
 
     Heater getOne(Long id);
 
+    Heater save(Heater heater);
+
 }
