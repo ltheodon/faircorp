@@ -4,6 +4,7 @@ import com.emse.spring.faircorp.model.Heater;
 import com.emse.spring.faircorp.model.Room;
 import com.emse.spring.faircorp.model.Window;
 
+import javax.persistence.OneToMany;
 import java.util.Set;
 
 public class RoomDto {
@@ -12,6 +13,8 @@ public class RoomDto {
     private String name;
     private Double currentTemperature;
     private Double targetTemperature;
+    private Set<Heater> heaters;
+    private Set<Window> windows;
 
     public RoomDto() {
     }
@@ -21,7 +24,8 @@ public class RoomDto {
         this.floor = Room.getFloor();
         this.name = Room.getName();
         this.currentTemperature = Room.getCurrentTemperature();
-        this.targetTemperature = Room.getTargetTemperature();
+        this.heaters = Room.getHeaters();
+        this.windows = Room.getWindows();
     }
 
     public Long getId() {

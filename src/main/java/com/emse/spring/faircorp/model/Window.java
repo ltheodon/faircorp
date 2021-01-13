@@ -13,11 +13,11 @@ public class Window {
     private Long id;
 
     // (4)
-    @NotNull
+    @Column(nullable = false)
     private String name;
 
-    @NotNull
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Room room;
 
     // (5)

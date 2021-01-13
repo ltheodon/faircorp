@@ -28,6 +28,16 @@ public class RoomController {
         return roomDao.findAll().stream().map(RoomDto::new).collect(Collectors.toList());  // (6)
     }
 
+    @GetMapping(path = "/tempUnder")
+    public List<RoomDto> findRoomUnder() {
+        return roomDao.findRoomUnder().stream().map(RoomDto::new).collect(Collectors.toList());  // (6)
+    }
+
+    @GetMapping(path = "/tempOver")
+    public List<RoomDto> findRoomOver() {
+        return roomDao.findRoomOver().stream().map(RoomDto::new).collect(Collectors.toList());  // (6)
+    }
+
     @GetMapping(path = "/{id}")
     public RoomDto findById(@PathVariable Long id) {
         return roomDao.findById(id).map(RoomDto::new).orElse(null); // (7)

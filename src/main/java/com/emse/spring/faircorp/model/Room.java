@@ -16,14 +16,17 @@ public class Room {
     @NotNull
     private Integer floor;
 
-    @NotNull
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Building building;
 
-    @NotNull
+    @Column(nullable = false)
     private String name;
 
+    @Column(name = "current_temperature")
     private Double currentTemperature;
+
+    @Column(name = "target_temperature")
     private Double targetTemperature;
 
     @OneToMany(mappedBy = "room")
@@ -38,6 +41,16 @@ public class Room {
     public Room(String name, Integer floor) {
         this.name = name;
         this.floor = floor;
+    }
+
+    public Room(String name, Integer floor, Building building, Double currentTemperature, Double targetTemperature, Set<Heater> heaters, Set<Window> windows) {
+        this.name = name;
+        this.floor = floor;
+        this.building = building;
+        this.currentTemperature = currentTemperature;
+        this.targetTemperature = targetTemperature;
+        this.heaters = heaters;
+        this.windows = windows;
     }
 
     public Long getId() {

@@ -8,6 +8,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 
+import static java.util.Collections.emptyList;
+
 public class WindowDaoCustomImpl implements WindowDaoCustom {
 
     @PersistenceContext
@@ -28,6 +30,23 @@ public class WindowDaoCustomImpl implements WindowDaoCustom {
         Query query = em.createQuery(jpql);
         Integer del = query.setParameter("id", id).executeUpdate();
         return del;
+    }
+
+    @Override
+    public List<Window> findByStatus(String windowStatus) {
+        WindowStatus status;
+        if (windowStatus.equals("OPEN")){
+            status = WindowStatus.OPEN;
+        }else if(windowStatus.equals("CLOSED")){
+            status = WindowStatus.CLOSED;
+        }else{
+            List<Window> L = emptyList();
+            return  L;
+        }
+        String jpql = "select w from Window w where w.windowStatus = :status";
+        return em.createQuery(jpql, Window.class)
+                .setParameter("status", status)
+                .getResultList();
     }
 
     /*public Window save(Window window) {

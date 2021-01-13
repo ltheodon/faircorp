@@ -1,6 +1,7 @@
 package com.emse.spring.faircorp.model;
 
 import com.sun.istack.NotNull;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -12,19 +13,19 @@ public class Heater {
     private Long id;
 
     // (4)
-    @NotNull
+    @Column(nullable = false)
     private String name;
 
-    @NotNull
+    @Nullable
     private Long power;
 
-    @NotNull
+    @JoinColumn(nullable = false)
     @ManyToOne
     private Room room;
 
     // (5)
-    @NotNull
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private HeaterStatus heaterStatus;
 
     public Heater() {
